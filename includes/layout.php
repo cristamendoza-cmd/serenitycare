@@ -20,11 +20,9 @@ function greeting() {
     return $h < 12 ? 'Good morning' : ($h < 18 ? 'Good afternoon' : 'Good evening');
 }
 
-'patient' => array(
-    '/patient/'                 => array('Dashboard', 'dashboard'),
-    '/patient/appointment.php'  => array('Appointments', 'calendar'),
-    '/patient/notification.php' => array('Notifications', 'bell'),
-),
+usort($out, function($a, $b) {
+        return strcasecmp($a['full_name'] ?? '', $b['full_name'] ?? '');
+    });
 
 /* ---- CSRF (double-submit cookie; works without PHP sessions) ---- */
 function csrf_token() {
