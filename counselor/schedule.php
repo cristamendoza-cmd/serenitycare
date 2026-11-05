@@ -9,7 +9,6 @@ $token = $me['token'];
 // Capture search query parameter
 $search = trim($_GET['q'] ?? '');
 
-// Fetch all appointments for the counselor
 $res = sb_request('GET', 'appointments',
     'select=*,patient:profiles!patient_id(full_name,patient_type)'
     . '&counselor_id=eq.' . urlencode($uid) . '&order=scheduled_at.desc', null, $token);
